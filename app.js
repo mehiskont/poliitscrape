@@ -23,17 +23,20 @@ const getWebsiteLinks = async (url) => {
 */
 
 const downloadLinks = async (linkList) => {
+  let idx = 0;
   for (const link of linkList) {
     const response = await axios.get(link)
     const $ = cheerio.load(response.data)
     let name = $('.subcontent.active div:first-child a:first-child').attr("href");
     //name = 'https://ariregister.rik.ee/' + name
    // let dlink = link + name[1]
-    let dlink = 'https://ariregister.rik.ee/' + name;
+    let dlink = 'https://ariregister.rik.ee' + name;
     dlinkList.push({
-      name: name,
+      name: idx,
       dlink: dlink
     })
+
+    idx ++
   }
 
   console.log(dlinkList);
@@ -58,6 +61,6 @@ const downloadFiles = async (dlinkList) => {
 
 (async () => {
  // await getWebsiteLinks(url)
-  await downloadLinks(linkList)
-  await downloadFiles(dlinkList)
-})()
+  await downloadLinks(linkList);
+  await downloadFiles(dlinkList);
+})();
