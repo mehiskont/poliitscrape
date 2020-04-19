@@ -1,5 +1,4 @@
-# GoalKicker-Books-Script
- A tiny js script (nodejs) to download all ebooks from Goalkicker
+
 
 ### Steps:
 
